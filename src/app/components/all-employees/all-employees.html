@@ -4,7 +4,7 @@
     <h5 class="mb-0">Manage Employees</h5>
     <div>
       <button class="btn btn-danger me-2">
-        <i class="bi bi-trash"></i> Delete
+        <i class="bi bi-trash "></i> Delete
       </button>
      
   
@@ -51,12 +51,12 @@
           <td>{{ employee.empPhone }}</td>
           <td>
             <button class="btn btn-sm  " (click)="editEmployee(employee.empId)">
-              <i class="bi bi-pencil-fill warning"></i>
+              <i class="bi bi-pencil-fill text-warning"></i>
             </button>
             <app-edit-employee #editEmployeeModal (employeeUpdated)="onEmployeeUpdated()"></app-edit-employee>
 
             <button class="btn btn-sm " (click)="deleteEmployee(employee.empId)">
-              <i class="bi bi-trash-fill danger"></i>
+              <i class="bi bi-trash-fill text-danger"></i>
             </button>
             <app-delete-employee #deleteEmployeeModal (employeeDeleted)="onEmployeeDeleted()"></app-delete-employee>
 
