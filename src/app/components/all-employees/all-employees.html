@@ -50,13 +50,13 @@
           <td>{{ employee.empAddress }}</td>
           <td>{{ employee.empPhone }}</td>
           <td>
-            <button class="btn btn-sm btn-warning me-1" (click)="editEmployee(employee.empId)">
-              <i class="bi bi-pencil-fill"></i>
+            <button class="btn btn-sm  " (click)="editEmployee(employee.empId)">
+              <i class="bi bi-pencil-fill warning"></i>
             </button>
             <app-edit-employee #editEmployeeModal (employeeUpdated)="onEmployeeUpdated()"></app-edit-employee>
 
-            <button class="btn btn-sm btn-danger" (click)="deleteEmployee(employee.empId)">
-              <i class="bi bi-trash-fill"></i>
+            <button class="btn btn-sm " (click)="deleteEmployee(employee.empId)">
+              <i class="bi bi-trash-fill danger"></i>
             </button>
             <app-delete-employee #deleteEmployeeModal (employeeDeleted)="onEmployeeDeleted()"></app-delete-employee>
 
