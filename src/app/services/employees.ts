@@ -17,18 +17,18 @@ export class Employees {
   }
 
   getById(id: number): Observable<Employee> {
-    return this.http.get<Employee>(`${this.baseUrl}/${id}`);
+    return this.http.get<Employee>(`${this.baseUrl}/getEmpByID/${id}`);
   }
 
   add(employee: Employee): Observable<Employee> {
-    return this.http.post<Employee>(this.baseUrl, employee);
+    return this.http.post<Employee>(`${this.baseUrl}/addEmployee`, employee);
   }
 
   update(id: number, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${this.baseUrl}/${id}`, employee);
+    return this.http.post<Employee>(`${this.baseUrl}/editEmployee`, employee);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.get<void>(`${this.baseUrl}/deleteEmpByID/${id}`);
   }
 }

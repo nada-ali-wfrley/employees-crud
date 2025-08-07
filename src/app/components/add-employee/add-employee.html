@@ -1,0 +1,39 @@
+<!-- Bootstrap Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true" #addModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Employee</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label>Name</label>
+            <input class="form-control" formControlName="empName">
+          </div>
+          <div class="mb-3">
+            <label>Email</label>
+            <input class="form-control" formControlName="empEmail">
+          </div>
+          <div class="mb-3">
+            <label>Address</label>
+            <input class="form-control" formControlName="empAddress">
+          </div>
+          <div class="mb-3">
+            <label>Phone</label>
+            <input class="form-control" formControlName="empPhone">
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Add</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
