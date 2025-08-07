@@ -26,17 +26,7 @@ export class EditEmployee {
     });
   }
 
-  // open(id: number) {
-  //   this.employeeId = id;
-
-  //   this.employeeService.getById(id).subscribe(emp => {
-  //     this.employeeForm.patchValue(emp);
-      
-  //     console.log(emp)
-  //     const modal = new bootstrap.Modal(this.editModal.nativeElement);
-  //     modal.show();
-  //   });
-  // }
+  
 open(id: number) {
   this.employeeId = id;
 
@@ -49,7 +39,7 @@ open(id: number) {
         empPhone: emp.empPhone
       });
 
-      // افتحي المودال
+      
       const modal = new bootstrap.Modal(this.editModal.nativeElement);
       modal.show();
     },

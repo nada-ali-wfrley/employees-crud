@@ -11,7 +11,7 @@ declare var bootstrap: any;
   templateUrl: './add-employee.html',
   styleUrl: './add-employee.css'
 })
-export class AddEmployee implements OnInit {
+export class AddEmployee  {
 
 
 
@@ -28,9 +28,7 @@ export class AddEmployee implements OnInit {
       empPhone: ['', [Validators.required, Validators.pattern(/^(010|011|012)\d{8}$/)]],
     });
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
 
   open() {
     const modal = new bootstrap.Modal(this.addModal.nativeElement);

@@ -8,31 +8,56 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
-      <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
-        <div class="modal-body">
-          <div class="mb-3">
-            <label>Name</label>
-            <input class="form-control" formControlName="empName" />
-          </div>
-          <div class="mb-3">
-            <label>Email</label>
-            <input class="form-control" formControlName="empEmail" />
-          </div>
-          <div class="mb-3">
-            <label>Address</label>
-            <input class="form-control" formControlName="empAddress" />
-          </div>
-          <div class="mb-3">
-            <label>Phone</label>
-            <input class="form-control" formControlName="empPhone" />
-          </div>
-        </div>
+     <form [formGroup]="employeeForm" (ngSubmit)="submitForm()">
+  <div class="modal-body">
 
-        <div class="modal-footer">
-          <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-          <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Update</button>
+
+    <div class="mb-3">
+      <label>Name</label>
+      <input class="form-control" formControlName="empName" />
+      <div *ngIf="employeeForm.get('empName')?.touched && employeeForm.get('empName')?.invalid" class="text-danger small">
+        <div *ngIf="employeeForm.get('empName')?.errors?.['required']">Name is required.</div>
+      </div>
+    </div>
+
+   
+    <div class="mb-3">
+      <label>Email</label>
+      <input class="form-control" formControlName="empEmail" />
+      <div *ngIf="employeeForm.get('empEmail')?.touched && employeeForm.get('empEmail')?.invalid" class="text-danger small">
+        <div *ngIf="employeeForm.get('empEmail')?.errors?.['required']">Email is required.</div>
+        <div *ngIf="employeeForm.get('empEmail')?.errors?.['email']">Invalid email format.</div>
+      </div>
+    </div>
+
+   
+    <div class="mb-3">
+      <label>Address</label>
+      <input class="form-control" formControlName="empAddress" />
+      <div *ngIf="employeeForm.get('empAddress')?.touched && employeeForm.get('empAddress')?.invalid" class="text-danger small">
+        <div *ngIf="employeeForm.get('empAddress')?.errors?.['required']">Address is required.</div>
+      </div>
+    </div>
+
+   
+    <div class="mb-3">
+      <label>Phone</label>
+      <input class="form-control" formControlName="empPhone" />
+      <div *ngIf="employeeForm.get('empPhone')?.touched && employeeForm.get('empPhone')?.invalid" class="text-danger small">
+        <div *ngIf="employeeForm.get('empPhone')?.errors?.['required']">Phone is required.</div>
+        <div *ngIf="employeeForm.get('empPhone')?.errors?.['pattern']">
+          Phone must start with 010, 011, or 012 and be 11 digits.
         </div>
-      </form>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+    <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Update</button>
+  </div>
+</form>
 
     </div>
   </div>

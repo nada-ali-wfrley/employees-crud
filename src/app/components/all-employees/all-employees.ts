@@ -27,7 +27,7 @@ export class AllEmployees implements AfterViewInit, OnInit {
   @ViewChild('addEmployeeModal') addEmployeeModal!: AddEmployee;
  @ViewChild('editEmployeeModal') editEmployeeModal!: EditEmployee;
 @ViewChild('deleteEmployeeModal') deleteEmployeeModal!: DeleteEmployee;
-  pageSize = 5;
+  pageSize = 10;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 20];
   currentSortColumn: string='';
@@ -80,9 +80,20 @@ this.cdr.detectChanges();
   }
 
   setPaginatedData() {
+
+ let sortedEmployees = [...this.employees];
+ if (this.currentSortColumn) {
+    sortedEmployees.sort((a, b) => {
+      const valueA = a[this.currentSortColumn as keyof Employee] ?? '';
+      const valueB = b[this.currentSortColumn as keyof Employee] ?? '';
+
+      const comparison = valueA.toString().localeCompare(valueB.toString(), undefined, { sensitivity: 'base' });
+      return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
+  }
     const start = this.pageIndex * this.pageSize;
     const end = start + this.pageSize;
-    this.paginatedEmployees = this.employees.slice(start, end);
+    this.paginatedEmployees = sortedEmployees.slice(start, end);
   }
 sortBy(column: keyof Employee) {
   if (this.currentSortColumn === column) {
@@ -91,7 +102,7 @@ sortBy(column: keyof Employee) {
     this.currentSortColumn = column;
     this.sortDirection = 'asc';
   }
-  
+  console.log("clicked")
   this.setPaginatedData();
 this.cdr.detectChanges();
 }
